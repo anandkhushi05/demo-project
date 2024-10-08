@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+# Run this workflow on push or pull request to the main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    # Step 2: Set up Node.js environment (if you have dependencies to build)
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    # Step 3: Build your application (if necessary)
+    - name: Build HTML (Optional step, no build required for pure HTML)
+      run: echo "No build needed for this static page"
+    
+    # Step 4: Deploy the HTML file (example uses GitHub Pages)
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
