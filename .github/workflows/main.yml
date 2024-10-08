@@ -2,12 +2,13 @@ name: CI/CD Pipeline
 
 # Run this workflow on push or pull request to the main branch
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+  #push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
 
 jobs:
   build:
